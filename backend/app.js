@@ -11,10 +11,11 @@ require('dotenv').config();
 const booksRoutes = require('./routes/books');
 const userRoutes = require('./routes/users');
 
-// Création de l'application express
+// Création de l'application express 
 const app = express();
 
 // Connection à la base de donnée MongoDb
+mongoose.set('strictQuery', true);
 mongoose.connect('mongodb+srv://' + process.env.DB_USER + ':' + process.env.DB_PASSWORD + '@' + process.env.DB_CLUSTER + '.mongodb.net/?retryWrites=true&w=majority',
 { useNewUrlParser: true,
     useUnifiedTopology: true })
@@ -28,10 +29,10 @@ app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
   next();
 });
-// Middleware utilisé pour l'analyse du body des requetes avenir au format JSON
+// Middleware utilisé pour l'analyse du body des requetes avenir au format JSON 
 app.use(express.json());
 
-// Securisation dee l'application
+// Securisation dee l'application 
 app.use(mongoSanitize());
 app.use(helmet({
   crossOriginResourcePolicy: false,
@@ -40,7 +41,6 @@ app.use(helmet({
 // Tous les routes définis dans booksRoutes seront accessibles sous l'URL /api/books/
 app.use('/api/books', booksRoutes);
 // Tous les routes définis dans booksRoutes seront accessibles sous l'URL /api/users/
-/api/users/
 app.use('/api/auth', userRoutes);  
 // Configuration d'un point d'accès pour gérer les requêtes vers le répertoire 'image', pour y accéder via l'URL/images/example.jpg
 app.use('/images', express.static(path.join(__dirname, 'images')));
