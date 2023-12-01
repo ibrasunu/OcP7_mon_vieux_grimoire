@@ -32,7 +32,7 @@ app.use((req, res, next) => {
 // Middleware utilisé pour l'analyse du body des requetes avenir au format JSON 
 app.use(express.json());
 
-// Securisation dee l'application 
+// Securisation de l'application 
 app.use(mongoSanitize());
 app.use(helmet({
   crossOriginResourcePolicy: false,

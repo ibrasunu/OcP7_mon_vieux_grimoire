@@ -158,7 +158,7 @@ exports.postRating = (req, res, next) => {
                 (sum, rating) => sum + rating.grade,
                 0
             );
-            const averageRating = sumRatings / totalRatings;
+            const averageRating = (sumRatings / totalRatings);
             book.averageRating = averageRating;
 
             // Sauvegarder les modifications
