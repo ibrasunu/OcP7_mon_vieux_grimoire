@@ -13,7 +13,7 @@ module.exports = async (req, res, next) => {
 			req.file.compressedFilePath = req.file.path + '.webp';
 		
 			await sharp(req.file.path)
-			.resize(500, 500)
+			.resize(301, 500)
 			.webp(90)
 			.toFile(req.file.compressedFilePath) 
 		
