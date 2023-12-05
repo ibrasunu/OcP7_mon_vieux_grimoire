@@ -14,7 +14,7 @@ module.exports = async (req, res, next) => {
 		
 			await sharp(req.file.path)
 			.resize(400)
-			.webp(80)
+			.webp(90)
 			.toFile(req.file.compressedFilePath) 
 		
 			// Si la compression réussit, nous supprimons simplement l'image originale

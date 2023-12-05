@@ -48,7 +48,7 @@
     margin-bottom: 75px;
 }
 .BookImage {
-    width: calc(40% - 80px);
+    width: calc(32% - 80px);
     background-position: center;
     background-size: cover;
     margin-right: 80px;
